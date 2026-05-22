@@ -12,24 +12,32 @@ create figures for your chemistry paper.
 
 ```bash
 # Install
-git clone https://github.com/your-username/smiles-to-3d.git
+git clone https://github.com/mako-star/smiles-to-3d.git
 cd smiles-to-3d
 pip install -e .
 
-# Prerequisites
-pip install rdkit
-# PyMOL must be installed: https://pymol.org/
+# Prerequisites (see docs/installation.md for details)
+pip install rdkit          # or: conda install -c conda-forge rdkit
+# PyMOL: https://pymol.org/
 
 # Render a single molecule
-python -c "
-from smiles_to_3d import smiles_to_png
-result = smiles_to_png('OCc1ccc(C=O)o1', 'hmf.png')
-print(result['png'])
-"
+smiles-render render --smiles "OCc1ccc(C=O)o1" --output hmf.png
+```
 
-# Batch render 10 molecules → assemble pathway SVG
-python scripts/batch_render.py
-python scripts/gen_pathway_svg.py --all
+Or use the Python API:
+
+```python
+from smiles_to_3d import smiles_to_png
+result = smiles_to_png("OCc1ccc(C=O)o1", "hmf.png")
+```
+
+Batch rendering:
+
+```bash
+# Create molecules.txt: each line "name SMILES"
+echo "HMF OCc1ccc(C=O)o1" > molecules.txt
+echo "CH2O C=O" >> molecules.txt
+smiles-render batch --file molecules.txt --out-dir ./pngs/
 ```
 
 ---
@@ -240,6 +248,14 @@ use the correct `id`. Our template handles this.
 
 ---
 
+## Documentation
+
+Full docs at [docs/](docs/):
+- [Installation](docs/installation.md)
+- [SMILES → 3D Workflow](docs/workflow.md)
+- [Pathway Spec Format](docs/spec-format.md)
+- [FAQ](docs/faq.md)
+
 ## Citation
 
 If you use smiles-to-3d in your research, please cite:
@@ -248,7 +264,8 @@ If you use smiles-to-3d in your research, please cite:
 @software{smiles-to-3d,
   title = {smiles-to-3d: SMILES to 3D Molecular Structure Rendering Toolkit},
   year = {2026},
-  url = {https://github.com/your-username/smiles-to-3d}
+  author = {mako-star},
+  url = {https://github.com/mako-star/smiles-to-3d}
 }
 ```
 

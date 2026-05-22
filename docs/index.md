@@ -1,8 +1,12 @@
 # smiles-to-3d Documentation
 
-## Contents
+1. [Installation](installation.md) — How to install RDKit, PyMOL, and smiles-to-3d
+2. [SMILES → 3D Workflow](workflow.md) — Complete RDKit + PyMOL rendering pipeline
+3. [Pathway Spec Format](spec-format.md) — YAML spec reference for pathway diagrams
+4. [FAQ](faq.md) — Common issues and solutions
 
-1. [SMILES → 3D Rendering Workflow](workflow.md) — Complete RDKit + PyMOL pipeline
-2. [Pathway Spec Format](spec-format.md) — YAML spec reference
-3. [Arrow Style Gallery](arrow-gallery.md) — Arrow visual reference
-4. [FAQ](faq.md) — Common issues
+## Quick Links
+
+- **GitHub**: [mako-star/smiles-to-3d](https://github.com/mako-star/smiles-to-3d)
+- **CLI**: `smiles-render --help`
+- **Python API**: `from smiles_to_3d import smiles_to_png, PathwaySpec`

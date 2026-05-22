@@ -1,6 +1,6 @@
 [build-system]
 requires = ["setuptools>=61.0"]
-build-backend = "setuptools.backends._legacy:_Backend"
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "smiles-to-3d"
@@ -9,7 +9,7 @@ description = "SMILES to 3D molecular structure rendering and reaction pathway d
 readme = "README.md"
 license = {text = "MIT"}
 authors = [
-    {name = "HMF Reaction Network Team"},
+    {name = "mako-star"},
 ]
 keywords = [
     "cheminformatics", "smiles", "3d-rendering", "molecular-structure",
@@ -31,13 +31,8 @@ classifiers = [
 
 requires-python = ">=3.8"
 dependencies = [
-    "rdkit",
     "pillow",
     "pyyaml",
-    "numpy",
-    "matplotlib",
-    "python-pptx",
-    "lxml",
 ]
 
 [project.optional-dependencies]
@@ -46,17 +41,12 @@ pptx = ["python-pptx", "lxml"]
 all = ["matplotlib", "numpy", "python-pptx", "lxml"]
 
 [project.scripts]
-smiles-to-png = "smiles_to_3d.render:smiles_to_png"
-gen-pathway-svg = "scripts.gen_pathway_svg:main"
-batch-render = "scripts.batch_render:main"
+smiles-render = "smiles_to_3d.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/your-username/smiles-to-3d"
-Repository = "https://github.com/your-username/smiles-to-3d"
-Issues = "https://github.com/your-username/smiles-to-3d/issues"
+Homepage = "https://github.com/mako-star/smiles-to-3d"
+Repository = "https://github.com/mako-star/smiles-to-3d"
+Issues = "https://github.com/mako-star/smiles-to-3d/issues"
 
 [tool.setuptools.packages.find]
 include = ["smiles_to_3d*"]
-
-[tool.setuptools.package-data]
-smiles_to_3d = ["*.yaml", "*.svg"]
