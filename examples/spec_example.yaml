@@ -1,0 +1,36 @@
+# Example YAML spec for pathway_mpl.py / pathway_pptx.py
+# HMF → Formaldehyde pathway (3 main chain + 2 side fragments)
+
+canvas:
+  dpi: 300
+  bg: "#ffffff"
+
+main_chain:
+  - id: HMF
+    png: HMF_bond1.2.png
+    label: "HMF"
+    label_cn: "羟甲基糠醛"
+    arrow_label: "+C₃HO"
+
+  - id: C3H5O2
+    png: C3H5O2_bond1.2.png
+    label: "C₃H₅O₂"
+    arrow_label: "+C₂H₃O"
+
+  - id: CH2O
+    png: CH2O_bond1.2.png
+    label: "CH₂O"
+    label_cn: "甲醛"
+
+side_fragments:
+  - id: C3HO
+    png: C3HO_bond1.2.png
+    label: "C₃HO"
+    attach_to: 0
+    position: above
+
+  - id: C2H3O
+    png: C2H3O_bond1.2.png
+    label: "C₂H₃O"
+    attach_to: 1
+    position: above

@@ -1,0 +1,50 @@
+# Pathway Spec YAML Template
+# Used by: pathway_mpl.py (Matplotlib) and pathway_pptx.py (PowerPoint)
+#
+# Usage:
+#   python -m smiles_to_3d.pathway_mpl spec.yaml --img-dir ./pngs/ --output pathway.png
+#   python -m smiles_to_3d.pathway_pptx spec.yaml --img-dir ./pngs/ --output pathway.pptx
+#
+# Field reference:
+#   main_chain[].id          (required) Unique node identifier
+#   main_chain[].png         (required) PNG filename (relative to --img-dir)
+#   main_chain[].label       (required) Chemical formula label
+#   main_chain[].label_cn    (optional) Chinese name (requires Noto Sans SC)
+#   main_chain[].arrow_label (optional) Reaction label on arrow (e.g. "+H·")
+#   side_fragments[].attach_to (required) 0-based index of parent main-chain node
+
+canvas:
+  dpi: 300
+  bg: "#ffffff"
+
+main_chain:
+  - id: reactant
+    png: reactant_bond1.2.png
+    label: "C₅H₄O₂"
+    label_cn: "反应物"
+    arrow_label: "+H·"
+
+  - id: intermediate
+    png: intermediate_bond1.2.png
+    label: "C₅H₅O₂"
+    arrow_label: "+H·"
+
+  - id: product
+    png: product_bond1.2.png
+    label: "C₅H₆O₂"
+    label_cn: "产物"
+
+side_fragments:
+  - id: H_radical
+    png: H_bond1.2.png
+    label: "H·"
+    attach_to: 0
+    position: above
+    arrow_label: ""
+
+  - id: HO_radical
+    png: HO_bond1.2.png
+    label: "HO·"
+    attach_to: 1
+    position: above
+    arrow_label: ""

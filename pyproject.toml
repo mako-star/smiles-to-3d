@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "smiles-to-3d"
+version = "1.0.0"
+description = "SMILES to 3D molecular structure rendering and reaction pathway diagram toolkit"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "HMF Reaction Network Team"},
+]
+keywords = [
+    "cheminformatics", "smiles", "3d-rendering", "molecular-structure",
+    "reaction-pathway", "pymol", "rdkit", "publication-figure",
+    "ball-and-stick", "svg", "scientific-figure",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Chemistry",
+    "Topic :: Scientific/Engineering :: Visualization",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+
+requires-python = ">=3.8"
+dependencies = [
+    "rdkit",
+    "pillow",
+    "pyyaml",
+    "numpy",
+    "matplotlib",
+    "python-pptx",
+    "lxml",
+]
+
+[project.optional-dependencies]
+mpl = ["matplotlib", "numpy"]
+pptx = ["python-pptx", "lxml"]
+all = ["matplotlib", "numpy", "python-pptx", "lxml"]
+
+[project.scripts]
+smiles-to-png = "smiles_to_3d.render:smiles_to_png"
+gen-pathway-svg = "scripts.gen_pathway_svg:main"
+batch-render = "scripts.batch_render:main"
+
+[project.urls]
+Homepage = "https://github.com/your-username/smiles-to-3d"
+Repository = "https://github.com/your-username/smiles-to-3d"
+Issues = "https://github.com/your-username/smiles-to-3d/issues"
+
+[tool.setuptools.packages.find]
+include = ["smiles_to_3d*"]
+
+[tool.setuptools.package-data]
+smiles_to_3d = ["*.yaml", "*.svg"]
